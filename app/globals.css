@@ -1,0 +1,287 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  isolation: isolate;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+body::before {
+  position: fixed;
+  z-index: -1;
+  inset: -7%;
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)),
+    url("/Doddle.jpg") center / cover no-repeat;
+  content: "";
+  animation: background-drift 18s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes background-drift {
+  from {
+    transform: scale(1.04) translate3d(-1%, -1%, 0);
+  }
+
+  to {
+    transform: scale(1.14) translate3d(1%, 1%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none;
+    transform: none;
+  }
+
+  .page-transition {
+    animation: none;
+  }
+}
+
+header {
+  background: #222;
+  padding: 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+nav a {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+nav a:hover {
+  color: #00bfff;
+}
+
+nav a.active {
+  color: #00bfff;
+  font-weight: bold;
+}
+
+nav a.active::after {
+  position: absolute;
+  right: 0;
+  bottom: -6px;
+  left: 0;
+  height: 2px;
+  background: #00bfff;
+  content: "";
+}
+
+main {
+  padding: 50px;
+  text-align: center;
+}
+
+.page-transition {
+  animation: page-enter 280ms ease-out both;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-profile-photo {
+  width: min(100%, 280px);
+  aspect-ratio: 1;
+  height: auto;
+  object-fit: cover;
+  object-position: center 18%;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 24px;
+}
+
+h1 {
+  margin-bottom: 15px;
+}
+
+p {
+  margin: 12px 0;
+}
+
+h2:last-of-type {
+  margin-top: 128px;
+}
+
+.hobby-image {
+  display: block;
+  width: min(100%, 520px);
+  height: auto;
+  margin: 18px auto 0;
+  border-radius: 12px;
+}
+
+.gallery-image + .gallery-image {
+  margin-top: 88px;
+}
+
+.second-hobby-image {
+  margin-top: 0;
+}
+
+.third-hobby-image {
+  margin-top: 0;
+}
+
+.hobby-caption {
+  width: min(100%, 520px);
+  margin: 120px auto 18px;
+  text-align: center;
+}
+
+html.scroll-reveal-ready .scroll-reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 550ms ease, transform 550ms ease;
+}
+
+html.scroll-reveal-ready .scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.scroll-reveal-ready .scroll-reveal,
+  html.scroll-reveal-ready .scroll-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.home-intro {
+  margin-bottom: 48px;
+}
+
+.home-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+}
+
+.home-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  min-height: 320px;
+  padding-top: 110px;
+}
+
+.home-photo {
+  width: min(100%, 280px);
+  aspect-ratio: 1;
+  height: auto;
+  object-fit: cover;
+  object-position: center 18%;
+  border-radius: 50%;
+  transform: translateY(-68px);
+}
+
+.about-button {
+  display: inline-block;
+  margin: 8px 0 24px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  background: #222;
+  color: white;
+  text-decoration: none;
+}
+
+.socials {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.socials a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 42px;
+  color: #222;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border-radius: 10px;
+  background: #222;
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.socials a:hover .social-icon {
+  background: #00bfff;
+  color: #222;
+}
+
+.about-button:hover {
+  background: #00bfff;
+  color: #222;
+}
+
+.about-button:focus-visible {
+  outline: 3px solid #00bfff;
+  outline-offset: 3px;
+}
+
+.portfolio-project {
+  margin-top: 24px;
+}
+
+.portfolio-project h2 {
+  margin-top: 50px;
+  margin-bottom: 0;
+}
+
+
+.portfolio-image {
+  display: block;
+  width: min(100%, 520px);
+  height: auto;
+  margin: 18px auto 0;
+}
+
+@media (max-width: 600px) {
+  .home-hero {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .home-copy {
+    text-align: center;
+  }
+}
